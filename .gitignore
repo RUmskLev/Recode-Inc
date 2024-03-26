@@ -2,4 +2,4 @@
 !/build/SDL2_image.dll
 !/build/SDL2_ttf.dll
 !/build/SDL2.dll
-/cmake/
+/cmake/*
