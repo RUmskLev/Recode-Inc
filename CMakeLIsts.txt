@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.27.5)
 project(game VERSION 0.1.0)
 
 # Options and variables, that could be changed
-option(DEBUG_MODE "If toggled ON - logs messages to opened console or file. See logger.h for logger usage" OFF)
-option(USE_SDL "If toggled ON - SDL2 libraries will not be added to build" OFF)
+option(DEBUG_MODE "If toggled ON - logs messages to opened console or file. See logger.h for logger usage" ON)
+option(USE_SDL "If toggled OFF - SDL2 libraries will not be added to build" ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build")
 
