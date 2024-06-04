@@ -45,74 +45,19 @@ void Country::closeWaterRoad(int i)
 
 
 
-void Country::closeAllRoads(){
-        for(int i{0}; i < this->rv.size(); ++i){
-                this->closeRoad(i + 1);
-        }
-}
-void Country::closeAllAirRoads(){
-        for(int i{0}; i < this->av.size(); ++i){
-                this->closeAirRoad(i + 1);
-        }
-}
-void Country::closeAllWaterRoads(){
-        for(int i{0}; i < this->wv.size(); ++i){
-                this->closeWterRoad(i + 1);
-        }
-}
 
-void Country::makeAllRoads(){
-        for(int i{0}; i < this->rv.size(); ++i){
-                if(this->noc != i + 1){
-                        this->makeRoad(i + 1);
-                }
-        }
-}
-void Country::makeAllAirRoads(){
-        for(int i{0}; i < this->av.size(); ++i){
-                if(this->noc != i + 1){
-                        this->makeAirRoad(i + 1);
-                }
-        }
-}
-void Country::makeAllWaterRoads(){
-        for(int i{0}; i < this->wv.size(); ++i){
-                if(this->noc != i + 1){
-                        this->makeWaterRoad(i + 1);
-                }
-        }
-}
 
 
 
 //class World
-void World::closeCountry(int i)
+World::World(int n)
 {
-        this->countries[i - 1]->closeAllRoads();
-        for(int j{0}; j < this->countries.size(); ++j){
-                if(j != i - 1){
-                        this->countries[j]->closeRoad(i);
-                }
+        for(int i{0}; i < 0; ++i){
+                countries.push_back(nullptr);
         }
 }
-void World::closeAirCountry(int i)
-{
-        this->countries[i - 1]->closeAllAirRoads();
-        for(int j{0}; j < this->countries.size(); ++j){
-                if(j != i - 1){
-                        this->countries[j]->closeAirRoad(i);
-                }
-        }
-}
-void World::closeWaterCountry(int i)
-{
-        this->countries[i - 1]->closeAllWaterRoads();
-        for(int j{0}; j < this->countries.size(); ++j){
-                if(j != i - 1){
-                        this->countries[j]->closeWaterRoad(i);
-                }
-        }
-}
+
+
 
 void World::makeRoad(int country1, int country2)
 {
@@ -146,3 +91,75 @@ void World::closeWaterRoad(int country1, int country2)
         this->countries[country2 - 1]->closeWaterRoad(country1);
 }
 
+
+void World::closeCountry(int i)
+{
+        for(int j{1}; j <= this->countries.size(); ++j){
+                if(j != i){
+                        this->closeRoad(i, j);
+                }
+        }
+}
+void World::closeAirCountry(int i)
+{
+        for(int j{1}; j <= this->countries.size(); ++j){
+                if(j != i){
+                        this->closeAirRoad(i, j);
+                }
+        }
+}
+void World::closeWaterCountry(int i)
+{
+        for(int j{1}; j <= this->countries.size(); ++j){
+                if(j != i){
+                        this->closeWaterRoad(i, j);
+                }
+        }
+}
+
+void World::makeAllRoads(int i){
+        for(int j{1}; j <= this->countries.size(); ++j){
+                if(i != j){
+                        this->makeRoad(i, j);
+                }
+        }
+}
+void World::makeAllAirRoads(int i){
+        for(int j{1}; j <= this->countries.size(); ++j){
+                if(i != j){
+                        this->makeAirRoad(i, j);
+                }
+        }
+}
+void World::makeAllWaterRoads(int i){
+        ffor(int j{1}; j <= this->countries.size(); ++j){
+                if(i != j){
+                        this->makeWaterRoad(i, j);
+                }
+        }
+}
+
+
+void World::closeAllAllCountries()
+{
+        for(int i{1}; i<= this-countries.size(); ++i){
+                this->closeCountry(i);
+                this->closeAirCountry(i);
+                this->closeWaterCountry(i);
+        }
+}
+
+
+void World::makeAllAllRoads()
+{
+        for(int i{1}; i <= this->countries.size(); ++i){
+                this->makeAllRoads(i);
+                this->makeAllAirRoads(i);
+                this->makeAllWaterRoads(i);
+        }
+}
+
+void World::addCountry(Country &country)
+{
+        countries[country.noc - 1] = &country;
+}

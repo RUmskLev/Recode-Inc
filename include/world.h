@@ -26,28 +26,13 @@ public:
         void closeRoad(int i);
         void closeAirRoad(int i);
         void closeWaterRoad(int i);
-        
-
-        void closeAllRoads();
-        void closeAllAirRoads();
-        void closeAllWaterRoads();
-
-        void makeAllRoads();
-        void makeAllAirRoads();
-        void makeAllWaterRoads();
-
-
 };
 
 
 class World{
         Country* countries;
 public:
-        World() = default;
-
-        void closeCountry(int i);
-        void closeAirCountry(int i);
-        void closeWaterCountry(int i);
+        World(int n);
 
 
         void makeRoad(int country1, int country2);
@@ -57,6 +42,21 @@ public:
         void closeRoad(int country1, int country2);
         void closeAirRoad(int country1, int country2);
         void closeWaterRoad(int country1, int country2);
-}
+
+        void closeCountry(int i);
+        void closeAirCountry(int i);
+        void closeWaterCountry(int i);
+
+        void makeAllRoads(int i);
+        void makeAllAirRoads(int i);
+        void makeAllWaterRoads(int i);
+
+        void closeAllAllCountries();
+
+        void makeAllAllRoads();
+
+        void addCountry(Country &country);
+
+};
 
 #endif
