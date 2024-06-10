@@ -43,7 +43,50 @@ void Country::closeWaterRoad(int i)
         this->wv[i - 1] = 0;
 }
 
-
+int Country::getPopulation()
+{
+        return this->population;
+}
+int Country::getInfected()
+{
+        return this->infected;
+}
+double Country::getProbVir()
+{
+        return this->probabilityVirus;
+}
+double Country::getSpeedVir()
+{
+        return this->speedVirus;
+}
+int Country::getNOC()
+{
+        return this->noc;
+}
+vector<int> Country::getRV()
+{
+        return this->rv;
+}
+vector<int> Country::getAV()
+{
+        return this->av;
+}
+vector<int> Country::getWV()
+{
+        return this->wv;
+}
+void Country::upInfected(int inf)
+{
+        this->infected += inf;
+}
+void Country::updateProbVir(int newProbVir)
+{
+        this->probabilityVirus = newProbVir;
+}
+void Country::updateSpeedVir(int newSpeed)
+{
+        this->speedVirus = newSpeed;
+}
 
 
 
@@ -58,6 +101,10 @@ World::World(int n)
 }
 
 
+vector<Country *> World::getCountries()
+{
+        return this->countries;
+}
 
 void World::makeRoad(int country1, int country2)
 {
@@ -132,7 +179,7 @@ void World::makeAllAirRoads(int i){
         }
 }
 void World::makeAllWaterRoads(int i){
-        ffor(int j{1}; j <= this->countries.size(); ++j){
+        for(int j{1}; j <= this->countries.size(); ++j){
                 if(i != j){
                         this->makeWaterRoad(i, j);
                 }
@@ -142,7 +189,7 @@ void World::makeAllWaterRoads(int i){
 
 void World::closeAllAllCountries()
 {
-        for(int i{1}; i<= this-countries.size(); ++i){
+        for(int i{1}; i<= this->countries.size(); ++i){
                 this->closeCountry(i);
                 this->closeAirCountry(i);
                 this->closeWaterCountry(i);

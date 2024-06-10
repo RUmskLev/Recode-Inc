@@ -8,7 +8,7 @@ class Country{
         int population;
         int infected;
         double probabilityVirus;
-        int speedVirus;
+        double speedVirus;
         int noc; //number of country
         //roads
         std::vector<int> rv;
@@ -26,14 +26,29 @@ public:
         void closeRoad(int i);
         void closeAirRoad(int i);
         void closeWaterRoad(int i);
-};
+
+        int getPopulation();
+        int getInfected();
+        double getProbVir();
+        double getSpeedVir();
+        int getNOC();
+        vector<int> getRV();
+        vector<int> getAV();
+        vector<int> getWV();
+
+        void upInfected(int inf);
+        void updateProbVir(int newProbVir);
+        void updateSpeedVir(int newSpeed);
+};      
 
 
 class World{
-        Country* countries;
+        vector<Country*> countries;
 public:
         World(int n);
 
+
+        vector<Country*> getCountries();
 
         void makeRoad(int country1, int country2);
         void makeAirRoad(int country1, int country2);
