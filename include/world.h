@@ -48,7 +48,7 @@ public:
         World(int n);
 
 
-        vector<Country*> getCountries();
+        Country* getCountry(int i);
 
         void makeRoad(int country1, int country2);
         void makeAirRoad(int country1, int country2);

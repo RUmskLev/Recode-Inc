@@ -101,9 +101,9 @@ World::World(int n)
 }
 
 
-vector<Country *> World::getCountries()
+Country* World::getCountry(int i)
 {
-        return this->countries;
+        return this->countries[i - 1];
 }
 
 void World::makeRoad(int country1, int country2)
