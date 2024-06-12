@@ -105,6 +105,9 @@ void game_space(){
             }
             //
             output = nn.feedforward(input);
+            if(output[37] == 1.0){
+                break;
+            }
             //
             // Update values
             for(int i{0}; i < 5; ++i){
@@ -133,6 +136,7 @@ void game_space(){
 
             }
             //
+            int sumInfected{0};
             for(int i{0}; i < 5; ++i){
 
                 int population = world.getCountry(i)->getPopulation();
@@ -153,7 +157,12 @@ void game_space(){
                     rand_of_inf = distInf(gen);
                     world.getCountry(i)->upInfected(std::min(rand_of_inf, population - infected));
                 }
+                sum += world.getCountry(i)->getInfected();
             } 
+            if(sum == 11200000){
+                wl = 1;
+                break;
+            }
         }
     }
 }
