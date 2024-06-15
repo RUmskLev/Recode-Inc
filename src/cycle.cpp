@@ -11,24 +11,24 @@ void game_space(){
     //
 
     //
-    Virus covid19();
+    Virus covid19;
     Country country1(1000000, 5, 1);
     Country country2(5000000, 5, 2);
     Country country3(500000, 5, 3);
     Country country4(3200000, 5, 4);
     Country country5(1500000, 5, 5);
-    World world(5);
+    World world;
     world.addCountry(country1);
     world.addCountry(country2);
     world.addCountry(country3);
     world.addCountry(country4);
     world.addCountry(country5);
-    world.makeAllAirRoads();
-    world.makeAllWaterRoads();
-    for(int i{1}; i <= world.size(); ++i){
+    for(int i{1}; i <= 5; ++i){
         world.makeRoad(i, i);
         world.makeAirRoad(i, i);
         world.makeWaterRoad(i, i);
+        world.makeAllAirRoads(i);
+        world.makeAllWaterRoads(i);
     }
     //
 
@@ -44,9 +44,9 @@ void game_space(){
     // Вход
     // 1-количество стран 
     // 25 - аэропорты, 25 - порты, 25 - дороги/жд, итого 75
-    // 14 -вирус
+    // 18 -вирус
     // 10 - популяции и заражённые в стране
-    // 100
+    // 104
     // Выход
     // 1 - ставить метку балла или нет
     // 1 - куда ставить (по 0,2 на страну)
@@ -75,14 +75,14 @@ void game_space(){
         if(freeze){
             // create new values
             for(int i{0}; i < 5; ++i){
-                Country country{*world.getCountry(i + 1)};
-                std::vector<int> rv = country.getRV();
-                std::vector<int> av = country.getAV();
-                std::vector<int> wv = country.getWV();
-                int infected = country.getInfected();
-                int population = country.getPopulation();
-                input[90 + i * 2] = population;
-                input[90 + i * 2 + 1] = infected;
+                Country* country = world.getCountry(i + 1);
+                std::vector<int> rv = country->getRV();
+                std::vector<int> av = country->getAV();
+                std::vector<int> wv = country->getWV();
+                int infected = country->getInfected();
+                int population = country->getPopulation();
+                input[94 + i * 2] = population;
+                input[94 + i * 2 + 1] = infected;
                 for(int j{0}; j < 5; ++j){
                     input[1 + i * 5 + j] = rv[j] * static_cast<double>(infected) / population;
                     input[26 + i * 5 + j] = av[j] * static_cast<double>(infected) / population;
@@ -102,6 +102,10 @@ void game_space(){
                 input[87] = covid19.getSkin();
                 input[88] = covid19.getImmune();
                 input[89] = covid19.getCns();
+                input[90] = covid19.getKidneys();
+                input[91] = covid19.getLiver();
+                input[92] = covid19.getHeart();
+                input[93] = covid19.getBladder();
             }
             //
             output = nn.feedforward(input);
@@ -111,9 +115,9 @@ void game_space(){
             //
             // Update values
             for(int i{0}; i < 5; ++i){
-                Country country{*world.getCountry(i + 1)};
-                country.updateProbVir(output[2 + i * 2]);
-                country.updateSpeedVir(output[3 + i * 2]);
+                Country* country{world.getCountry(i + 1)};
+                country->updateProbVir(output[2 + i * 2]);
+                country->updateSpeedVir(output[3 + i * 2]);
                 if(output[12 + i] >= 0.5){
                     world.closeAirCountry(i + 1);
                 }
@@ -157,9 +161,9 @@ void game_space(){
                     rand_of_inf = distInf(gen);
                     world.getCountry(i)->upInfected(std::min(rand_of_inf, population - infected));
                 }
-                sum += world.getCountry(i)->getInfected();
+                sumInfected += world.getCountry(i)->getInfected();
             } 
-            if(sum == 11200000){
+            if(sumInfected == 11200000){
                 wl = 1;
                 break;
             }
