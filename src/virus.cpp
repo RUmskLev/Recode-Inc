@@ -1,114 +1,179 @@
 #include "virus.h"
-//
-int Virus::getMedRes() const{
+
+int Virus::getMedRes() const
+{
         return medResist;
 }
 //
-int Virus::getAirTr() const{
+int Virus::getAirTr() const
+{
         return air;
 }
 
-int Virus::getWaterTr() const{
+int Virus::getWaterTr() const
+{
         return water;
 }
 
-int Virus::getBirdTr() const{
+int Virus::getBirdTr() const
+{
         return bird;
 }
 
-int Virus::getBloodTr() const{
+int Virus::getBloodTr() const
+{
         return bloodTr;
 }
 
-int Virus::getInsectTr() const{
+int Virus::getInsectTr() const
+{
         return insect;
 }
 
-int Virus::getRodentTr() const{
+int Virus::getRodentTr() const
+{
         return rodent;
 }
 
-int Virus::getLivestockTr() const{
+int Virus::getLivestockTr() const
+{
         return livestock;
 }
 //
-int Virus::getIntestines() const{
-        return intestine;
+int Virus::getIntestines() const
+{
+        return intestines;
 }
         
-int Virus::getLungs() const{
+int Virus::getLungs() const
+{
         return lungs;
 }
 
-int Virus::getBlood() const{
+int Virus::getBlood() const
+{
         return blood;
 }
 
-int Virus::getSkin() const{
+int Virus::getSkin() const
+{
         return skin;
 }
 
-int Virus::getImmune() const{
+int Virus::getImmune() const
+{
         return immune;
 }
 
-int Virus::getCns() const{
+int Virus::getCns() const
+{
         return cns;
+}
+int Virus::getKidneys() const
+{
+        return kidneys;
+}
+int Virus::getLiver() const
+{
+        return liver;
+}
+int Virus::getHeart() const
+{
+        return heart;
+}
+
+int Virus::getBladder() const
+{
+        return bladder;
 }
 //
 //
-void Virus::upMedRes(){
+void Virus::upMedRes()
+{
         ++medResist;
 }
 //
-void Virus::upAirTr(){
+void Virus::upAirTr()
+{
         ++air;
 }
         
-void Virus::upWaterTr(){
+void Virus::upWaterTr()
+{
         ++water;
 }
         
-void Virus::upBirdTr(){
+void Virus::upBirdTr()
+{
         ++bird;
 }
 
-void Virus::upBloodTr(){
+void Virus::upBloodTr()
+{
         ++bloodTr;
 }
 
-void Virus::upInsectTr(){
+void Virus::upInsectTr()
+{
         ++insect;
 }
 
-void Virus::upRodentTr(){
+void Virus::upRodentTr()
+{
         ++rodent;
 }
 
-void Virus::upLivestockTr(){
+void Virus::upLivestockTr()
+{
         ++livestock;
 }
 //
-void Virus::upIntestines(){
-        ++intestine;
+void Virus::upIntestines()
+{
+        ++intestines;
 }
 
-void Virus::upLungs(){
+void Virus::upLungs()
+{
         ++lungs;
 }
         
-void Virus::upBlood(){
+void Virus::upBlood()
+{
         ++blood;
 }
         
-void Virus::upSkin(){
+void Virus::upSkin()
+{
         ++skin;
 }
         
-void Virus::upImmune(){
+void Virus::upImmune()
+{
         ++immune;
 }
         
-void Virus::upCns(){
+void Virus::upCns()
+{
         ++cns;
+}
+
+void Virus::upKidneys()
+{
+        ++kidneys;
+}
+
+void Virus::upLiver()
+{
+        ++liver;
+}
+
+void Virus::upHeart()
+{
+        ++heart;
+}
+
+void Virus::upBladder()
+{
+        ++bladder;
 }

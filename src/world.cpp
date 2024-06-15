@@ -1,8 +1,6 @@
 #include "world.h"
 
 
-
-//class Country
 Country::Country(int pop, int n, int numb){
         population = pop;
         infected = 0;
@@ -63,15 +61,15 @@ int Country::getNOC()
 {
         return this->noc;
 }
-vector<int> Country::getRV()
+std::vector<int> Country::getRV()
 {
         return this->rv;
 }
-vector<int> Country::getAV()
+std::vector<int> Country::getAV()
 {
         return this->av;
 }
-vector<int> Country::getWV()
+std::vector<int> Country::getWV()
 {
         return this->wv;
 }
@@ -79,11 +77,11 @@ void Country::upInfected(int inf)
 {
         this->infected += inf;
 }
-void Country::updateProbVir(int newProbVir)
+void Country::updateProbVir(double newProbVir)
 {
         this->probabilityVirus = newProbVir;
 }
-void Country::updateSpeedVir(int newSpeed)
+void Country::updateSpeedVir(double newSpeed)
 {
         this->speedVirus = newSpeed;
 }
@@ -93,14 +91,6 @@ void Country::updateSpeedVir(int newSpeed)
 
 
 //class World
-World::World(int n)
-{
-        for(int i{0}; i < 0; ++i){
-                countries.push_back(nullptr);
-        }
-}
-
-
 Country* World::getCountry(int i)
 {
         return this->countries[i - 1];
@@ -164,21 +154,24 @@ void World::closeWaterCountry(int i)
         }
 }
 
-void World::makeAllRoads(int i){
+void World::makeAllRoads(int i)
+{
         for(int j{1}; j <= this->countries.size(); ++j){
                 if(i != j){
                         this->makeRoad(i, j);
                 }
         }
 }
-void World::makeAllAirRoads(int i){
+void World::makeAllAirRoads(int i)
+{
         for(int j{1}; j <= this->countries.size(); ++j){
                 if(i != j){
                         this->makeAirRoad(i, j);
                 }
         }
 }
-void World::makeAllWaterRoads(int i){
+void World::makeAllWaterRoads(int i)
+{
         for(int j{1}; j <= this->countries.size(); ++j){
                 if(i != j){
                         this->makeWaterRoad(i, j);
@@ -208,5 +201,28 @@ void World::makeAllAllRoads()
 
 void World::addCountry(Country &country)
 {
-        countries[country.noc - 1] = &country;
+        countries.push_back(&country);
+}
+
+void World::initStartWorld()
+{       
+        this->closeAllAllCountries();
+
+        for(int i{1}; i <= this->countries.size(); ++i){
+                Country* country = this->getCountry(i);
+                std::cout << country->getInfected();
+                this->closeRoad(i, i);
+                this->closeAirRoad(i, i);
+                this->closeWaterRoad(i, i);
+                country->updateProbVir(0.0);
+                country->updateSpeedVir(0.0);
+                country->upInfected(-(country->getInfected()));
+        }
+        for(int i{1}; i <= this->countries.size(); ++i){
+                this->makeRoad(i, i);
+                this->makeAirRoad(i, i);
+                this->makeWaterRoad(i, i);
+                this->makeAllAirRoads(i);
+                this->makeAllWaterRoads(i);
+        }
 }
