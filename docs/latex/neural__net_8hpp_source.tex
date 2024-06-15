@@ -1,0 +1,48 @@
+\doxysection{neural\+\_\+net.\+hpp}
+\hypertarget{neural__net_8hpp_source}{}\label{neural__net_8hpp_source}\mbox{\hyperlink{neural__net_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ NEURAL\_NET\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ NEURAL\_NET\_HPP}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{neural__net_8hpp_aa924e8c95bc498ebc9f8e08a0c491e7c}{sigmoid}}(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{neural__net_8hpp_ac143739c163f4e0a2c2e63d8a03e6644}{sigmoidDerivative}}(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_neural_network}{NeuralNetwork}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_neural_network}{NeuralNetwork}}(\textcolor{keyword}{const}\ std::vector<int>\&\ layerSizes,\ \textcolor{keywordtype}{int}\ seed\ =\ time(0));}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_neural_network}{NeuralNetwork}}(std::string\ filename);}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_neural_network_a9b92b9a976f886da1eff04bcff401754}{feedforward}}(\textcolor{keyword}{const}\ std::vector<double>\&\ inputs);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_neural_network_ab6cd0605d3694af15b620c973246a8f5}{backpropagate}}(\textcolor{keyword}{const}\ std::vector<double>\&\ inputs,\ \textcolor{keyword}{const}\ std::vector<double>\&\ targets,\ \textcolor{keywordtype}{double}\ learningRate);}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_neural_network_ab29369b6392c8686d0b6e5eff43edf02}{train}}(\textcolor{keyword}{const}\ std::vector<std::vector<double>>\&\ data,\ \textcolor{keyword}{const}\ std::vector<std::vector<double>>\&\ targets,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::vector<double>>\&\ check\_data,\ \textcolor{keyword}{const}\ std::vector<std::vector<double>>\&\ check\_targets,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ epochs,\ \textcolor{keywordtype}{double}\ learningRate,\ \textcolor{keywordtype}{double}\ needed\_accuracy);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_neural_network_a75cd7852aceb70b5b15c12b8e27422f2}{print\_train\_result}}(\textcolor{keyword}{const}\ std::vector<std::vector<double>>\&\ data,\ \textcolor{keyword}{const}\ std::vector<std::vector<double>>\&\ targets);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_neural_network_a0980982deb8c2e87a8ae56c6b00274a7}{print\_weights\_to\_txt}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ std::vector<std::vector<double>>\ \mbox{\hyperlink{class_neural_network_aee6205d5e0d04debfdb759a7bcd7cdea}{output\_biases}}();}
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<std::vector<std::vector<double>>>\ \mbox{\hyperlink{class_neural_network_af0cb0b99ada8edc635d1aa86b72a2bf2}{output\_best\_weights}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<int>\ layer\_sizes;}
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<std::vector<std::vector<double>>>\ weights;}
+\DoxyCodeLine{00044\ \ \ \ \ std::vector<std::vector<double>>\ layers;}
+\DoxyCodeLine{00045\ \ \ \ \ std::vector<std::vector<double>>\ biases;}
+\DoxyCodeLine{00046\ \ \ \ \ std::vector<std::vector<std::vector<double>>>\ best\_weights;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ initializeWeights(\textcolor{keywordtype}{int}\ seed);}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ NEURAL\_NET\_HPP}}
+
+\end{DoxyCode}
