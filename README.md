@@ -23,6 +23,9 @@ Read CMakeLists.txt for more info.
 
 You can start, choose the first country for infection. While you virus is spreading, you are going to catch points and upgrade your virus. 
 
+![image](https://github.com/RUmskLev/Recode-Inc/assets/74106956/c62f57eb-0467-47e7-83f6-450f5cb93a8b)
+
+
 There is the virus's mene where you can choose witch parametr you want to upgrade.
 
 ![image](https://github.com/RUmskLev/Recode-Inc/assets/74106956/502d8509-5108-43cc-81f2-127b6046f734)
