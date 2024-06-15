@@ -32,6 +32,7 @@ There is the virus's mene where you can choose witch parametr you want to upgrad
 
 You will win, if you infect all people around the world and lose if the cure creats faster.
 
+![image](https://github.com/RUmskLev/Recode-Inc/assets/74106956/4566e8ad-94b2-48e3-836b-495c5e4b0f1f)
 
 If you want, you can quit from the game.
 You can see your faults and winnnings in the counter in the menu.
