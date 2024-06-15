@@ -25,6 +25,7 @@ You can start, choose the first country for infection. While you virus is spread
 
 There is the virus's mene where you can choose witch parametr you want to upgrade.
 
+![image](https://github.com/RUmskLev/Recode-Inc/assets/74106956/502d8509-5108-43cc-81f2-127b6046f734)
 
 You will win, if you infect all people around the world and lose if the cure creats faster.
 
