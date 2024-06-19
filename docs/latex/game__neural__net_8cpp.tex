@@ -1,0 +1,39 @@
+\doxysection{game\+\_\+neural\+\_\+net.\+cpp File Reference}
+\hypertarget{game__neural__net_8cpp}{}\label{game__neural__net_8cpp}\index{game\_neural\_net.cpp@{game\_neural\_net.cpp}}
+{\ttfamily \#include "{}game\+\_\+neural\+\_\+net.\+hpp"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_neural_network}{Neural\+Network}} \&\& \mbox{\hyperlink{game__neural__net_8cpp_a3e4fb953e31f0d32f7c4c5d90a38f311}{game\+\_\+neural\+\_\+network}} (std\+::vector$<$ double $>$(\texorpdfstring{$\ast$}{*}generate\+\_\+target)(const std\+::vector$<$ double $>$ \&), std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&data, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&targets, int overlearn\+\_\+coefficient, int epochs, double learning\+Rate, std\+::vector$<$ int $>$ layer\+\_\+sizes, double needed\+\_\+accuracy)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the functions to start the Neural Network 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__neural__net_8cpp_a3e4fb953e31f0d32f7c4c5d90a38f311}\label{game__neural__net_8cpp_a3e4fb953e31f0d32f7c4c5d90a38f311} 
+\index{game\_neural\_net.cpp@{game\_neural\_net.cpp}!game\_neural\_network@{game\_neural\_network}}
+\index{game\_neural\_network@{game\_neural\_network}!game\_neural\_net.cpp@{game\_neural\_net.cpp}}
+\doxysubsubsection{\texorpdfstring{game\_neural\_network()}{game\_neural\_network()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_neural_network}{Neural\+Network}} \&\& game\+\_\+neural\+\_\+network (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$(\texorpdfstring{$\ast$}{*})(const std\+::vector$<$ double $>$ \&)}]{generate\+\_\+target,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{data,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{targets,  }\item[{int}]{overlearn\+\_\+coefficient,  }\item[{int}]{epochs,  }\item[{double}]{learning\+Rate,  }\item[{std\+::vector$<$ int $>$}]{layer\+\_\+sizes,  }\item[{double}]{needed\+\_\+accuracy }\end{DoxyParamCaption})}
+
+This function starts the neural network 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & includes all values in Neural Network of type std\+::vector\texorpdfstring{$<$}{<}double \\
+\hline
+\mbox{\texttt{ in}}  & {\em targets} & includes all the values of the aim dataset of type std\+::vector\texorpdfstring{$<$}{<}std\+::vector$<$double$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em overlearn\+\_\+coefficient} & displays the refitting factor of type int \\
+\hline
+\mbox{\texttt{ in}}  & {\em epochs} & includes the amount of the time Neural Network starts of type int \\
+\hline
+\mbox{\texttt{ in}}  & {\em learning\+Rate} & includes the speed of the learning of Neural Network of type double \\
+\hline
+\mbox{\texttt{ in}}  & {\em layer\+\_\+sizes} & includes the amount of layers\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the Neural Network result 
+\end{DoxyReturn}

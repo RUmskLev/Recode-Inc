@@ -1,8 +1,6 @@
 #include "world.h"
 
 
-
-//class Country
 Country::Country(int pop, int n, int numb){
         population = pop;
         infected = 0;
@@ -57,7 +55,6 @@ double Country::getProbVir()
 }
 double Country::getSpeedVir()
 {
-        return speedVirus;
 }
 int Country::getNOC()
 {
@@ -87,12 +84,6 @@ void Country::updateSpeedVir(double newSpeed)
 {
         this->speedVirus = newSpeed;
 }
-
-
-
-
-
-//class World
 
 
 
@@ -159,13 +150,16 @@ void World::closeWaterCountry(int i)
         }
 }
 
-void World::makeAllRoads(int i){
+
+void World::makeAllRoads(int i)
+{
         for(int j{1}; j <= this->countries.size(); ++j){
                 if(i != j){
                         this->makeRoad(i, j);
                 }
         }
 }
+
 void World::makeAllAirRoads(int i){
         for(int j{1}; j <= this->countries.size(); ++j){
                 if(i != j){
@@ -173,7 +167,9 @@ void World::makeAllAirRoads(int i){
                 }
         }
 }
-void World::makeAllWaterRoads(int i){
+
+void World::makeAllWaterRoads(int i)
+{
         for(int j{1}; j <= this->countries.size(); ++j){
                 if(i != j){
                         this->makeWaterRoad(i, j);
@@ -204,4 +200,27 @@ void World::makeAllAllRoads()
 void World::addCountry(Country &country)
 {
         countries.push_back(&country);
+}
+
+void World::initStartWorld()
+{       
+        this->closeAllAllCountries();
+
+        for(int i{1}; i <= this->countries.size(); ++i){
+                Country* country = this->getCountry(i);
+                std::cout << country->getInfected();
+                this->closeRoad(i, i);
+                this->closeAirRoad(i, i);
+                this->closeWaterRoad(i, i);
+                country->updateProbVir(0.0);
+                country->updateSpeedVir(0.0);
+                country->upInfected(-(country->getInfected()));
+        }
+        for(int i{1}; i <= this->countries.size(); ++i){
+                this->makeRoad(i, i);
+                this->makeAirRoad(i, i);
+                this->makeWaterRoad(i, i);
+                this->makeAllAirRoads(i);
+                this->makeAllWaterRoads(i);
+        }
 }

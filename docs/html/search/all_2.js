@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['game_5fneural_5fnet_2ecpp_0',['game_neural_net.cpp',['../game__neural__net_8cpp.html',1,'']]],
+  ['game_5fneural_5fnet_2ehpp_1',['game_neural_net.hpp',['../game__neural__net_8hpp.html',1,'']]],
+  ['game_5fneural_5fnetwork_2',['game_neural_network',['../game__neural__net_8cpp.html#a3e4fb953e31f0d32f7c4c5d90a38f311',1,'game_neural_network(std::vector&lt; double &gt;(*generate_target)(const std::vector&lt; double &gt; &amp;), std::vector&lt; std::vector&lt; double &gt; &gt; &amp;data, std::vector&lt; std::vector&lt; double &gt; &gt; &amp;targets, int overlearn_coefficient, int epochs, double learningRate, std::vector&lt; int &gt; layer_sizes, double needed_accuracy):&#160;game_neural_net.cpp'],['../game__neural__net_8hpp.html#a2bb7d2228b6075373e67996cbdc1b28c',1,'game_neural_network(std::vector&lt; double &gt;(*generate_target)(const std::vector&lt; double &gt; &amp;), std::vector&lt; std::vector&lt; double &gt; &gt; &amp;data, std::vector&lt; std::vector&lt; double &gt; &gt; &amp;targets, int overlearn_coefficient=5, int epochs=10000, double learningRate=0.2, std::vector&lt; int &gt; layer_sizes={36, 24, 16, 8}, double needed_accuracy=0.99):&#160;game_neural_net.cpp']]]
+];

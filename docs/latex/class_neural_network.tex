@@ -1,0 +1,166 @@
+\doxysection{Neural\+Network Class Reference}
+\hypertarget{class_neural_network}{}\label{class_neural_network}\index{NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_neural_network_a754cf258f22ed05178897dc305ce954d}{Neural\+Network}} (const std\+::vector$<$ int $>$ \&layer\+Sizes, int seed=time(0))
+\item 
+\mbox{\hyperlink{class_neural_network_ab122eb7b726970a51be96a8242924c80}{Neural\+Network}} (std\+::string filename)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_neural_network_a9b92b9a976f886da1eff04bcff401754}{feedforward}} (const std\+::vector$<$ double $>$ \&inputs)
+\item 
+void \mbox{\hyperlink{class_neural_network_ab6cd0605d3694af15b620c973246a8f5}{backpropagate}} (const std\+::vector$<$ double $>$ \&inputs, const std\+::vector$<$ double $>$ \&targets, double learning\+Rate)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_neural_network_ab29369b6392c8686d0b6e5eff43edf02}{train}} (const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&data, const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&targets, const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&check\+\_\+data, const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&check\+\_\+targets, int epochs, double learning\+Rate, double needed\+\_\+accuracy)
+\item 
+double \mbox{\hyperlink{class_neural_network_a75cd7852aceb70b5b15c12b8e27422f2}{print\+\_\+train\+\_\+result}} (const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&data, const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&targets)
+\item 
+void \mbox{\hyperlink{class_neural_network_a0980982deb8c2e87a8ae56c6b00274a7}{print\+\_\+weights\+\_\+to\+\_\+txt}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_neural_network_aee6205d5e0d04debfdb759a7bcd7cdea}{output\+\_\+biases}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{class_neural_network_af0cb0b99ada8edc635d1aa86b72a2bf2}{output\+\_\+best\+\_\+weights}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_neural_network_a754cf258f22ed05178897dc305ce954d}\label{class_neural_network_a754cf258f22ed05178897dc305ce954d} 
+\index{NeuralNetwork@{NeuralNetwork}!NeuralNetwork@{NeuralNetwork}}
+\index{NeuralNetwork@{NeuralNetwork}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{NeuralNetwork()}{NeuralNetwork()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Neural\+Network\+::\+Neural\+Network (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{layer\+Sizes,  }\item[{int}]{seed = {\ttfamily time(0)} }\end{DoxyParamCaption})}
+
+This is the first consructor of the \doxylink{class_neural_network}{Neural\+Network} class
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em layer\+Sizes} & is the amount of the layers in Neural Network of type std\+::vector$<$int$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em seed} & sets the initial value for the beginning of education the Neural Network of type int \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_neural_network_ab122eb7b726970a51be96a8242924c80}\label{class_neural_network_ab122eb7b726970a51be96a8242924c80} 
+\index{NeuralNetwork@{NeuralNetwork}!NeuralNetwork@{NeuralNetwork}}
+\index{NeuralNetwork@{NeuralNetwork}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{NeuralNetwork()}{NeuralNetwork()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Neural\+Network\+::\+Neural\+Network (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+This is the second constructor of the \doxylink{class_neural_network}{Neural\+Network} class 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & is the name of the file where will be written the counted weights \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_neural_network_ab6cd0605d3694af15b620c973246a8f5}\label{class_neural_network_ab6cd0605d3694af15b620c973246a8f5} 
+\index{NeuralNetwork@{NeuralNetwork}!backpropagate@{backpropagate}}
+\index{backpropagate@{backpropagate}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{backpropagate()}{backpropagate()}}
+{\footnotesize\ttfamily void Neural\+Network\+::backpropagate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{inputs,  }\item[{const std\+::vector$<$ double $>$ \&}]{targets,  }\item[{double}]{learning\+Rate }\end{DoxyParamCaption})}
+
+This function reckons the reverse gradient descent to reduce the amount of mistakes in education
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em inputs} & denotes the values of neirons in the input layer of type std\+::vector$<$double$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em targets} & denotes the values of output layer of neirons of type std\+::vector$<$double$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em learning\+Rate} & denotes the speed of education \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_neural_network_a9b92b9a976f886da1eff04bcff401754}\label{class_neural_network_a9b92b9a976f886da1eff04bcff401754} 
+\index{NeuralNetwork@{NeuralNetwork}!feedforward@{feedforward}}
+\index{feedforward@{feedforward}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{feedforward()}{feedforward()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Neural\+Network\+::feedforward (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{inputs }\end{DoxyParamCaption})}
+
+This function provides the direct distribution
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em inputs} & denotes the values of neirons in the input layer of type std\+::vector$<$double$>$\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the activation of the output layer the Neural Network 
+\end{DoxyReturn}
+\Hypertarget{class_neural_network_af0cb0b99ada8edc635d1aa86b72a2bf2}\label{class_neural_network_af0cb0b99ada8edc635d1aa86b72a2bf2} 
+\index{NeuralNetwork@{NeuralNetwork}!output\_best\_weights@{output\_best\_weights}}
+\index{output\_best\_weights@{output\_best\_weights}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{output\_best\_weights()}{output\_best\_weights()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $>$ Neural\+Network\+::output\+\_\+best\+\_\+weights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function returns the best counted weights \begin{DoxyReturn}{Returns}
+best weigths counted by network 
+\end{DoxyReturn}
+\Hypertarget{class_neural_network_aee6205d5e0d04debfdb759a7bcd7cdea}\label{class_neural_network_aee6205d5e0d04debfdb759a7bcd7cdea} 
+\index{NeuralNetwork@{NeuralNetwork}!output\_biases@{output\_biases}}
+\index{output\_biases@{output\_biases}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{output\_biases()}{output\_biases()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Neural\+Network\+::output\+\_\+biases (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function returns the values of biases
+
+\begin{DoxyReturn}{Returns}
+biases 
+\end{DoxyReturn}
+\Hypertarget{class_neural_network_a75cd7852aceb70b5b15c12b8e27422f2}\label{class_neural_network_a75cd7852aceb70b5b15c12b8e27422f2} 
+\index{NeuralNetwork@{NeuralNetwork}!print\_train\_result@{print\_train\_result}}
+\index{print\_train\_result@{print\_train\_result}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{print\_train\_result()}{print\_train\_result()}}
+{\footnotesize\ttfamily double Neural\+Network\+::print\+\_\+train\+\_\+result (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{data,  }\item[{const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{targets }\end{DoxyParamCaption})}
+
+This function displays the result of training
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & stands the amount of all parametres in Neural Network of type std\+::vector$<$std\+::vector$<$double$>$$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em targets} & stands the amount of final parametres in Neural Network of type std\+::vector$<$std\+::vector$<$double$>$$>$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the error of the training 
+\end{DoxyReturn}
+\Hypertarget{class_neural_network_a0980982deb8c2e87a8ae56c6b00274a7}\label{class_neural_network_a0980982deb8c2e87a8ae56c6b00274a7} 
+\index{NeuralNetwork@{NeuralNetwork}!print\_weights\_to\_txt@{print\_weights\_to\_txt}}
+\index{print\_weights\_to\_txt@{print\_weights\_to\_txt}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{print\_weights\_to\_txt()}{print\_weights\_to\_txt()}}
+{\footnotesize\ttfamily void Neural\+Network\+::print\+\_\+weights\+\_\+to\+\_\+txt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is the function of writing into the file the best weights of Neural Network \Hypertarget{class_neural_network_ab29369b6392c8686d0b6e5eff43edf02}\label{class_neural_network_ab29369b6392c8686d0b6e5eff43edf02} 
+\index{NeuralNetwork@{NeuralNetwork}!train@{train}}
+\index{train@{train}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{train()}{train()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Neural\+Network\+::train (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{train\+\_\+data,  }\item[{const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{train\+\_\+targets,  }\item[{const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{check\+\_\+data,  }\item[{const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \&}]{check\+\_\+targets,  }\item[{int}]{epochs,  }\item[{double}]{learning\+Rate,  }\item[{double}]{needed\+\_\+accuracy }\end{DoxyParamCaption})}
+
+This function implements training of the Neural network
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em train\+\_\+data} & stands the training player\textquotesingle{}s dataset for the Network of type std\+::vector$<$std\+::vector$<$double$>$$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em train\+\_\+targets} & stands the training output\textquotesingle{}s dataset of type std\+::vector$<$std\+::vector$<$double$>$$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em check\+\_\+data} & stands the checking player\textquotesingle{}s dataset of type std\+::vector$<$std\+::vector$<$double$>$$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em check\+\_\+targets} & stands the checking output dataset of type std\+::vector$<$std\+::vector$<$double$>$$>$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em epochs} & stans the amount of repeating the education for Neural Network of type int \\
+\hline
+\mbox{\texttt{ in}}  & {\em learning\+Rate} & denotes the speed of education \\
+\hline
+\mbox{\texttt{ in}}  & {\em needed\+\_\+accuracy} & stands the neccessary value of the precision of the education\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the activation of the output layer the Neural Network 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{neural__net_8hpp}{neural\+\_\+net.\+hpp}}\item 
+\mbox{\hyperlink{neural__net_8cpp}{neural\+\_\+net.\+cpp}}\end{DoxyCompactItemize}

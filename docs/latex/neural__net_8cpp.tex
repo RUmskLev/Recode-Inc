@@ -1,0 +1,52 @@
+\doxysection{neural\+\_\+net.\+cpp File Reference}
+\hypertarget{neural__net_8cpp}{}\label{neural__net_8cpp}\index{neural\_net.cpp@{neural\_net.cpp}}
+{\ttfamily \#include "{}neural\+\_\+net.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{neural__net_8cpp_aa924e8c95bc498ebc9f8e08a0c491e7c}{sigmoid}} (double x)
+\begin{DoxyCompactList}\small\item\em class \doxylink{class_neural_network}{Neural\+Network} \textbackslash{}detials This calss is aimed at creating a Neural Network \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{neural__net_8cpp_ac143739c163f4e0a2c2e63d8a03e6644}{sigmoid\+Derivative}} (double x)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains encryption and decryption functions of all neural net types and data validation functions 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{neural__net_8cpp_aa924e8c95bc498ebc9f8e08a0c491e7c}\label{neural__net_8cpp_aa924e8c95bc498ebc9f8e08a0c491e7c} 
+\index{neural\_net.cpp@{neural\_net.cpp}!sigmoid@{sigmoid}}
+\index{sigmoid@{sigmoid}!neural\_net.cpp@{neural\_net.cpp}}
+\doxysubsubsection{\texorpdfstring{sigmoid()}{sigmoid()}}
+{\footnotesize\ttfamily double sigmoid (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+
+
+class \doxylink{class_neural_network}{Neural\+Network} \textbackslash{}detials This calss is aimed at creating a Neural Network 
+
+This function transfroms input data into the range from 0 to 1
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & players input of type double\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+real number from 0 to 1 
+\end{DoxyReturn}
+\Hypertarget{neural__net_8cpp_ac143739c163f4e0a2c2e63d8a03e6644}\label{neural__net_8cpp_ac143739c163f4e0a2c2e63d8a03e6644} 
+\index{neural\_net.cpp@{neural\_net.cpp}!sigmoidDerivative@{sigmoidDerivative}}
+\index{sigmoidDerivative@{sigmoidDerivative}!neural\_net.cpp@{neural\_net.cpp}}
+\doxysubsubsection{\texorpdfstring{sigmoidDerivative()}{sigmoidDerivative()}}
+{\footnotesize\ttfamily double sigmoid\+Derivative (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+This function counts the value of sigmoid derivative in reverse gradient descent for each weight of type double
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & weight value of type double\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of sigmoid derivative for each weight 
+\end{DoxyReturn}
