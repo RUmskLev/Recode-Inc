@@ -13,7 +13,7 @@ void SDL_RenderFillRoundedRect(SDL_Renderer *renderer, int x, int y, int width, 
 
     int less_side = std::min(width, height);
 
-    SDL_SetRenderDrawColor(renderer, color.r - colorOffset, color.g - colorOffset, color.b - colorOffset, SDL_ALPHA_OPAQUE);
+    // SDL_SetRenderDrawColor(renderer, color.r - colorOffset, color.g - colorOffset, color.b - colorOffset, SDL_ALPHA_OPAQUE);
 
     SDL_Rect crossRectVertical = {x + less_side / 4, y, width - less_side / 2, height};
     SDL_Rect crossRectHorizontal = {x, y + less_side / 4, width, height - less_side / 2};
@@ -140,14 +140,14 @@ Button::Button(SDL_Renderer* renderer, std::string text, int x, int y, int w, in
 
 void Button::draw(SDL_Renderer *renderer)
 {
-    SDL_SetRenderDrawColor(renderer, buttonColor.r, buttonColor.g, buttonColor.b, buttonColor.a);
     // SDL_Rect rect = {x, y, w, h};
     textSurface = TTF_RenderText_Shaded(font, text.c_str(), buttonTextColor, {buttonColor.r, buttonColor.g, buttonColor.b});
     SDL_SetColorKey(textSurface, SDL_TRUE, SDL_MapRGB(textSurface->format, buttonColor.r, buttonColor.g, buttonColor.b));
     texture = SDL_CreateTextureFromSurface(renderer, textSurface);
     textRect = {x + (w - textSurface->w) / 2, y + (h - textSurface->h) / 2, textSurface->w, textSurface->h};
     if(buttonColor.a){
-        SDL_RenderFillRoundedRect(renderer, x, y, w, h, buttonColor, colorOffset);
+        SDL_SetRenderDrawColor(renderer, buttonColor.r, buttonColor.g, buttonColor.b, buttonColor.a);
+        SDL_RenderFillRoundedRect(renderer, x, y, w, h, buttonColor, 0);
     }
     SDL_RenderCopy(renderer, texture, nullptr, &textRect);
     SDL_DestroyTexture(texture);

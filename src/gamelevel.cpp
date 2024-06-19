@@ -140,17 +140,20 @@ Game::Game(SDL_Renderer *renderer, bool* gamePause, World* world)
 
     exitButton = new Button{renderer, "X", 760, 10, 30, 30, CLOSE_BUTTON_COLOR, usedFont};
     closeUpgradeMenuButton = new Button{renderer, "X", 10, 10, 30, 30, CLOSE_BUTTON_COLOR, usedFont};
-    upgradesButton = new Button{renderer, "Virus", -35, 525, 175, 110, MENU_BUTTONS_COLOR, usedFont};
+    upgradesButton = new Button{renderer, "Virus", -35, 525, 175, 110, WORLD_BUTTON_COLOR, usedFont};
     infoWorldButton = new Button{renderer, "World", 660, 525, 175, 110, WORLD_BUTTON_COLOR, usedFont};
     infoCountryButton = new Button{renderer, " ", 200, 510, 400, 200, WORLD_BUTTON_COLOR, usedFont};
+    newsButton = new Button{renderer, " ", -30, -30, 230, 80, WORLD_BUTTON_COLOR, usedFont};
 
     infoVirusLeftButton = new Button{renderer, " ", -50, 475, 350, 225, WORLD_BUTTON_COLOR, usedFont};
     infoVirusRightButton = new Button{renderer, " ", 500, 475, 350, 225, WORLD_BUTTON_COLOR, usedFont};
-    buyUpgradeButton = new Button{renderer, "Buy for ? DNA", 25, 500, 225, 50, WORLD_BUTTON_COLOR, usedFont};
+    buyUpgradeButton = new Button{renderer, "Buy for ? DNA", 25, 500, 225, 50, CLOSE_BUTTON_COLOR, usedFont};
 
     countryName = new Label{renderer, "Country", 260, 500, 300, 50, commonFont};
     countryPopulation = new Label{renderer, "0", 280, 520, 300, 50, commonFont};
     countryInfected = new Label{renderer, "0", 280, 540, 300, 50, commonFont};
+    newsLabel = new Label{renderer, "News:", 2, 2, 50, 50, usedFont};
+    dnaLabel = new Label{renderer, "0", 50, 520, 50, 50, usedFont};
 
     bgTexture = IMG_LoadTexture(renderer, "assets/Game_background.jpg");
     if(!bgTexture) {
@@ -206,6 +209,7 @@ Game::~Game()
     delete infoVirusRightButton;
     delete buyUpgradeButton;
     delete infoCountryButton;
+    delete newsButton;
     SDL_DestroyTexture(bgTexture);
     SDL_DestroyTexture(upgradeMenuTexture);
 }
@@ -241,14 +245,19 @@ int Game::draw(SDL_Renderer *renderer)
             countryInfected->change_text(std::string{"Infected: "}.append(std::to_string(startCountry->getInfected())));
         }
 
+        dnaLabel->change_text(std::to_string(DNA));
+
         exitButton->draw(renderer);
         upgradesButton->draw(renderer);
         infoWorldButton->draw(renderer);
         infoCountryButton->draw(renderer);
+        newsButton->draw(renderer);
 
         countryName->draw(renderer);
         countryPopulation->draw(renderer);
         countryInfected->draw(renderer);
+        newsLabel->draw(renderer);
+        dnaLabel->draw(renderer);
 
         return 0;
     } else {

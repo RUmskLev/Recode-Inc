@@ -95,6 +95,7 @@ public:
     Button* infoVirusLeftButton;
     Button* infoVirusRightButton;
     Button* buyUpgradeButton;
+    Button* newsButton;
     SDL_Texture* countryLabel;
     SDL_Renderer* levelRendererForTests; // Test variations of functions visually display info, so renderer is needed in checks
     bool* gamepause;
@@ -102,8 +103,11 @@ public:
     Label* countryName;
     Label* countryPopulation;
     Label* countryInfected;
+    Label* newsLabel;
+    Label* dnaLabel;
     TTF_Font* commonFont;
     int bought_green;
+    int DNA = 5;
 
     Game(SDL_Renderer *renderer, bool* gamePause, World* world);
 

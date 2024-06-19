@@ -15,6 +15,36 @@
 #include <random>
 
 
+void saveStats(const std::string &filename, int wins, int loses)
+{
+    std::ofstream file(filename);
+
+    if (file.is_open())
+    {
+        file << wins << std::endl;
+        file << loses << std::endl;
+        file.close();
+    } else {
+        logger.error(101, "No file to save stats!");
+    }
+}
+
+
+void loadStats(const std::string &filename, int& wins, int& loses)
+{
+    std::ifstream file(filename);
+
+    if (file.is_open())
+    {
+        file >> wins;
+        file >> loses;
+        file.close();
+    } else {
+        logger.error(101, "No file to load stats!");
+    }
+}
+
+
 int main(int argc, char *argv[])
 {
     logger.debug("PROGRAMM START");
@@ -59,6 +89,8 @@ int main(int argc, char *argv[])
     int loses = 0;
     bool show_score = true;
 
+    loadStats("stats.txt", wins, loses);
+
     Virus covid19;
     Country country1(1000000, 5, 1);
     Country country2(5000000, 5, 2);
@@ -83,9 +115,9 @@ int main(int argc, char *argv[])
     //
     std::vector<std::vector<double>> data;
     std::vector<std::vector<double>> targets;
-    NeuralNetwork nn = game_neural_network(
-        generate_target, data, targets,33, 10000,
-        0.15, {100, 24, 16, 38}, 0.99);
+    NeuralNetwork nn = NeuralNetwork(
+        generate_target, data, targets,33, 105,
+        0.15, {104, 78, 52, 38}, 0.99);
     std::vector<double> input(100, 0.0);
     input[0] = 5.0;
     std::vector<double> output;
@@ -118,7 +150,7 @@ int main(int argc, char *argv[])
     int rand_value{0};
     int rand_of_inf{0};
 
-    SDL_Window *window = SDL_CreateWindow("FUNKIE MANKIE", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+    SDL_Window *window = SDL_CreateWindow("RE CODE INC", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
 
@@ -182,7 +214,7 @@ int main(int argc, char *argv[])
                     Country* country = world.getCountry(i + 1);
                     country->updateProbVir(output[2 + i * 2]);
                     country->updateSpeedVir(0.1);// output[3 + i * 2]);
-                    std::cout << "JUst after speed vir: " << world.getCountry(i + 1)->getSpeedVir() << "\n";
+                    // std::cout << "JUst after speed vir: " << world.getCountry(i + 1)->getSpeedVir() << "\n";
                     if(output[12 + i] >= 0.5){
                         world.closeAirCountry(i + 1);
                     }
@@ -298,11 +330,16 @@ int main(int argc, char *argv[])
 
         currentScene->draw(renderer);
 
-        winsLabel.draw(renderer);
-        losesLabel.draw(renderer);
+        if (show_score)
+        {
+            winsLabel.draw(renderer);
+            losesLabel.draw(renderer);
+        }
 
         SDL_RenderPresent(renderer);
     }
+
+    saveStats("stats.txt", wins, loses);
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

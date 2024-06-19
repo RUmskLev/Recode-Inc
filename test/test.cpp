@@ -6,7 +6,7 @@
 #include "menu.h"
 
 
-TEST_CASE("INITIALISING SUBSYSTEMS")
+TEST_CASE("INITIALISING SUBSYSTEMS CORRECTLY ON WINDOWS")
 {
     CHECK(!SDL_Init(SDL_INIT_VIDEO));
     CHECK(!SDL_Init(SDL_INIT_EVENTS));
@@ -16,17 +16,3 @@ TEST_CASE("INITIALISING SUBSYSTEMS")
     
     CHECK(!TTF_Init());
 }
-
-// TEST_CASE("LOAD GAME OBJECTS FROM FILES")
-// {
-//     CHECK();
-// }
-
-// void test_loading_menu() {
-//     std::string output;
-//     std::cout << "Hello, World!" << std::endl;
-// }
-// TEST_CASE("Test cout output") {
-//     std::getline(std::cin, output);
-//     CHECK(output == "Hello, World!\n");
-// }

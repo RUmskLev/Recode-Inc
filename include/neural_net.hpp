@@ -14,6 +14,10 @@ public:
     std::vector<double> train(const std::vector<std::vector<double>>& data, const std::vector<std::vector<double>>& targets,
                          const std::vector<std::vector<double>>& check_data, const std::vector<std::vector<double>>& check_targets,
                          int epochs, double learningRate, double needed_accuracy);
+    NeuralNetwork(std::vector<double> (*generate_target)(const std::vector<double>&),
+                                    std::vector<std::vector<double>> &data, std::vector<std::vector<double>> &targets,
+                                    int overlearn_coefficient, int epochs, double learningRate,
+                                    std::vector<int> layer_sizes, double needed_accuracy);
 
     double print_train_result(const std::vector<std::vector<double>>& data, const std::vector<std::vector<double>>& targets);
 
@@ -26,6 +30,9 @@ private:
     std::vector<std::vector<std::vector<double>>> best_weights;
 
     void initializeWeights();
+    std::vector<double> calculate(const std::vector<double> inputs);
+    void print_weights_to_txt();
+    NeuralNetwork(std::string filename);
 };
 
 #endif // NEURAL_NET_HPP
