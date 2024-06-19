@@ -2,6 +2,7 @@
 #define VIRUS_H
 #include <iostream>
 
+
 /**
 *\file
 *Описание вспомогательного класса

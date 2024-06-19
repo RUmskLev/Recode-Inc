@@ -55,7 +55,6 @@ double Country::getProbVir()
 }
 double Country::getSpeedVir()
 {
-        return this->speedVirus;
 }
 int Country::getNOC()
 {
@@ -88,9 +87,6 @@ void Country::updateSpeedVir(double newSpeed)
 
 
 
-
-
-//class World
 Country* World::getCountry(int i)
 {
         return this->countries[i - 1];
@@ -154,6 +150,7 @@ void World::closeWaterCountry(int i)
         }
 }
 
+
 void World::makeAllRoads(int i)
 {
         for(int j{1}; j <= this->countries.size(); ++j){
@@ -162,14 +159,15 @@ void World::makeAllRoads(int i)
                 }
         }
 }
-void World::makeAllAirRoads(int i)
-{
+
+void World::makeAllAirRoads(int i){
         for(int j{1}; j <= this->countries.size(); ++j){
                 if(i != j){
                         this->makeAirRoad(i, j);
                 }
         }
 }
+
 void World::makeAllWaterRoads(int i)
 {
         for(int j{1}; j <= this->countries.size(); ++j){

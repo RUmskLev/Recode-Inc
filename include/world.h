@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 
+
 /**
 *\file
 *Описание вспомогательных классов

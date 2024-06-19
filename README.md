@@ -1,3 +1,4 @@
+
 # Plague-Inc with AI assistant
 
 ## Run on local machine:

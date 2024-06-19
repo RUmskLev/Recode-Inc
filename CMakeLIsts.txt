@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.27.5)
 project(game VERSION 0.1.0)
 
 # Options and variables, that could be changed
-option(DEBUG_MODE "If toggled ON - logs messages to opened console or file. See logger.h for logger usage" OFF)
-option(USE_SDL "If toggled ON - SDL2 libraries will not be added to build" OFF)
+option(DEBUG_MODE "If toggled ON - logs messages to opened console or file. See logger.h for logger usage" ON)
+option(USE_SDL "If toggled OFF - SDL2 libraries will not be added to build" ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build")
 
@@ -18,6 +18,7 @@ if (DEBUG_MODE)
 endif()
 
 file(GLOB PROJECT_SRC "src/*.cpp")
+file(GLOB SDL2_GFX_SRC "lib/SDL2_gfx-1.0.4/*.c")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static")
 
@@ -26,12 +27,35 @@ if (USE_SDL)
     find_package(SDL2_image REQUIRED)
     find_package(SDL2_ttf REQUIRED)
 
-    add_executable(game WIN32 ${PROJECT_SRC})
+    add_executable(game WIN32 ${PROJECT_SRC} ${SDL2_GFX_SRC})
 
     target_link_libraries(game SDL2::SDL2main SDL2::SDL2 SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
-    target_include_directories(game PUBLIC "${CMAKE_SOURCE_DIR}/include")
+    target_include_directories(game PUBLIC "${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}/lib/SDL2_gfx-1.0.4" "${CMAKE_SOURCE_DIR}/lib/doctest.h")
 else()
     add_executable(game ${PROJECT_SRC})
 
     target_include_directories(game PUBLIC "${CMAKE_SOURCE_DIR}/include")
+endif()
+
+if (TESTS)
+  enable_testing()
+
+  add_subdirectory(googletest)
+
+  add_executable(mock-test "test/mock-test.cpp")
+  add_executable(elements-test "test/elements_test.cpp")
+
+  target_link_libraries(mock-test gtest_main gmock_main)
+  target_include_directories(mock-test PUBLIC "${CMAKE_SOURCE_DIR}/include")
+
+  target_include_directories(elements-test PUBLIC "${CMAKE_SOURCE_DIR}/include")
+
+  add_test(NAME elements_test COMMAND elements_test --force-colors -d)
+  add_test(NAME mock_test COMMAND mock_test --force-colors -d)
+endif()
+
+if (TRAIN_NN_MODE)
+  add_executable(nn_trainer "isolate/nn_main.cpp")
+
+  target_include_directories(nn_trainer PUBLIC "${CMAKE_SOURCE_DIR}/include")
 endif()
